@@ -1,37 +1,35 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const getFbVideoInfo = require('fb-downloader-scrapper');
+const shortid = require('shortid');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.post('/api/download-facebook-video', async (req, res) => {
+const urlDatabase = {}; // In-memory storage for original and shortened URLs
+
+app.post('/api/shorten-url', (req, res) => {
     const { url } = req.body;
 
     if (!url) {
         return res.status(400).json({ error: 'URL is required.' });
     }
 
-    try {
-        const result = await getFbVideoInfo(url);
+    const id = shortid.generate();
+    const shortenedUrl = `http://localhost:5000/${id}`; // Change this URL based on your deployment
+    urlDatabase[id] = url;
 
-        const downloadLink = result?.hd || result?.sd || null;
+    res.json({ shortenedUrl });
+});
 
-        if (!downloadLink) {
-            return res.status(404).json({ error: 'No downloadable video found.' });
-        }
+app.get('/:id', (req, res) => {
+    const originalUrl = urlDatabase[req.params.id];
 
-        res.json({
-            downloadLink,
-            title: result.title,
-            duration: result.duration,
-            thumbnail: result.thumbnail
-        });
-    } catch (error) {
-        console.error('Error fetching video:', error);
-        res.status(500).json({ error: 'Failed to fetch video. Please check the URL and try again.' });
+    if (originalUrl) {
+        res.redirect(originalUrl);
+    } else {
+        res.status(404).json({ error: 'URL not found.' });
     }
 });
 

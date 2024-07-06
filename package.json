@@ -8,18 +8,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sumansasmal2003/convertio.git"
+    "url": "git+https://github.com/sumansasmal2003/convertio_fb.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sumansasmal2003/convertio/issues"
+    "url": "https://github.com/sumansasmal2003/convertio_fb/issues"
   },
-  "homepage": "https://github.com/sumansasmal2003/convertio#readme",
+  "homepage": "https://github.com/sumansasmal2003/convertio_fb#readme",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "express": "^4.19.2",
-    "fb-downloader-scrapper": "^2.0.0"
+    "shortid": "^2.2.16"
   }
 }
