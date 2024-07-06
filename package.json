@@ -6,14 +6,20 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sumansasmal2003/convertio.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sumansasmal2003/convertio/issues"
+  },
+  "homepage": "https://github.com/sumansasmal2003/convertio#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
-    "file-saver": "^2.0.5",
-    "youtube-dl-exec": "^3.0.6",
-    "ytdl-core": "^4.11.5"
+    "fb-downloader-scrapper": "^2.0.0"
   }
 }
