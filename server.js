@@ -17,7 +17,7 @@ app.post('/api/shorten-url', (req, res) => {
     }
 
     const id = shortid.generate();
-    const shortenedUrl = `http://localhost:5000/${id}`; // Change this URL based on your deployment
+    const shortenedUrl = `https://convertioofficial.netlify.app/${id}`; // Change this URL based on your deployment
     urlDatabase[id] = url;
 
     res.json({ shortenedUrl });
